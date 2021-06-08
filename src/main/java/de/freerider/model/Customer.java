@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import de.freerider.repository.CrudRepository;
 
-public class Customer implements CrudRepository<Customer, String>{
+public class Customer {
 
 	private String id = null;
 	private String lastName;
@@ -17,76 +17,39 @@ public class Customer implements CrudRepository<Customer, String>{
 		this.firstName = firstName;
 		this.contact = contact;
 	}
-
-	@Override
-	public <S extends Customer> S save(S entity) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public String getId() {
+		return id;
 	}
 
-	@Override
-	public <S extends Customer> Iterable<S> saveAll(Iterable<S> entities) {
-		// TODO Auto-generated method stub
-		return null;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	@Override
-	public Optional<Customer> findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getLastName() {
+		return lastName;
 	}
 
-	@Override
-	public boolean existsById(String id) {
-		// TODO Auto-generated method stub
-		return false;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	@Override
-	public Iterable<Customer> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	@Override
-	public Iterable<Customer> findAllById(Iterable<String> ids) {
-		// TODO Auto-generated method stub
-		return null;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	@Override
-	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
+	public String getContact() {
+		return contact;
 	}
 
-	@Override
-	public void deleteById(String id) {
-		// TODO Auto-generated method stub
-		
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
+	
+	
 
-	@Override
-	public void delete(Customer entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteAllById(Iterable<? extends String> ids) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteAll(Iterable<? extends Customer> entities) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteAll() {
-		// TODO Auto-generated method stub
-		
-	}
 }
