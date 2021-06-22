@@ -7,23 +7,30 @@ import de.freerider.repository.CrudRepository;
 public class Customer {
 
 	private String id = null;
-	private String lastName;
-	private String firstName;
-	private String contact;
-	private enum status {New, InRegistration, Active, Suspended, Deleted}
-	
+	private String lastName = "";
+	private String firstName = "";
+	private String contact = "";
+
+	public enum Status {
+		New, InRegistration, Active, Suspended, Deleted
+	}
+
+	private Status status = Status.New;
+
 	public Customer(String lastName, String firstName, String contact) {
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.contact = contact;
+
 	}
-	
+
 	public String getId() {
 		return id;
 	}
 
 	public void setId(String id) {
-		this.id = id;
+		if (this.id == null || id == null)
+			this.id = id;
 	}
 
 	public String getLastName() {
@@ -31,7 +38,10 @@ public class Customer {
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		if (lastName == null)
+			this.lastName = "";
+		else
+			this.lastName = lastName;
 	}
 
 	public String getFirstName() {
@@ -39,7 +49,10 @@ public class Customer {
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		if (firstName == null)
+			this.firstName = "";
+		else
+			this.firstName = firstName;
 	}
 
 	public String getContact() {
@@ -47,9 +60,18 @@ public class Customer {
 	}
 
 	public void setContact(String contact) {
-		this.contact = contact;
+		if (contact == null)
+			this.contact = "";
+		else
+			this.contact = contact;
 	}
-	
-	
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 }
