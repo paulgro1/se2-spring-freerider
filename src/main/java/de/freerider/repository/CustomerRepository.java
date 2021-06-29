@@ -17,6 +17,9 @@ class CustomerRepository implements CrudRepository<Customer, String> {
 	@Override
 	public <S extends Customer> S save(S entity) {
 
+		if (entity == null)
+			throw new IllegalArgumentException();
+
 		if (entity.getId() == null | entity.getId() == "") {
 
 			entity.setId(idGen.nextId());
@@ -29,12 +32,22 @@ class CustomerRepository implements CrudRepository<Customer, String> {
 
 		}
 
+		if (customers.keySet().contains(entity.getId())) {
+			S prevCustomer = (S) customers.put(entity.getId(), entity);
+			customers.put(entity.getId(), entity);
+			return prevCustomer;
+		}
+		
 		customers.put(entity.getId(), entity);
 		return entity;
 	}
 
 	@Override
 	public <S extends Customer> Iterable<S> saveAll(Iterable<S> entities) {
+
+		if (entities == null)
+			throw new IllegalArgumentException();
+
 		entities.forEach(this::save);
 
 		return entities;
@@ -45,11 +58,17 @@ class CustomerRepository implements CrudRepository<Customer, String> {
 
 		Optional<Customer> opt = Optional.empty();
 
-		for (Customer customer : findAll()) {
-			if (customer.getId() == id)
-				opt = Optional.of(customer);
+		if (id != null) {
 
-		}
+			for (Customer customer : findAll()) {
+				if (customer.getId() == id)
+					opt = Optional.of(customer);
+
+			}
+
+		} else if (id == null)
+			throw new IllegalArgumentException();
+
 		return opt;
 	}
 
@@ -71,6 +90,9 @@ class CustomerRepository implements CrudRepository<Customer, String> {
 	@Override
 	public Iterable<Customer> findAllById(Iterable<String> ids) {
 
+		if (ids == null)
+			throw new IllegalArgumentException();
+
 		HashSet<Customer> foundCustomers = new HashSet<Customer>();
 
 		ids.forEach(id -> {
@@ -90,6 +112,10 @@ class CustomerRepository implements CrudRepository<Customer, String> {
 
 	@Override
 	public void deleteById(String id) {
+
+		if (id == null)
+			throw new IllegalArgumentException();
+
 		customers.remove(id);
 
 	}
@@ -99,18 +125,31 @@ class CustomerRepository implements CrudRepository<Customer, String> {
 		if (entity == null) {
 			throw new IllegalArgumentException();
 		}
-		customers.remove(entity.getId());
+
+		if (entity.getId() == null)
+			throw new IllegalArgumentException();
+
+		if (customers.containsKey(entity.getId()))
+			customers.remove(entity.getId());
 
 	}
 
 	@Override
 	public void deleteAllById(Iterable<? extends String> ids) {
+
+		if (ids == null)
+			throw new IllegalArgumentException();
+
 		ids.forEach(this::deleteById);
 
 	}
 
 	@Override
 	public void deleteAll(Iterable<? extends Customer> entities) {
+
+		if (entities == null)
+			throw new IllegalArgumentException();
+
 		entities.forEach(this::delete);
 
 	}
