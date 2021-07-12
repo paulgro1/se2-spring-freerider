@@ -1,18 +1,10 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-
-### STS ###
+### STS, eclipse ###
 .apt_generated
 .classpath
 .factorypath
 .project
 .settings
-.springBeans
 .sts4-cache
-.DS_Store
 
 ### IntelliJ IDEA ###
 .idea
@@ -26,9 +18,41 @@ target/
 /dist/
 /nbdist/
 /.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### ignore generated directories and compiled output ###
+out
+bin
+target
+**/*.class
+**/*.jar
+
+### ignore log files ###
+**/*.log
+
+### ignore Mac's .DS_Store files ###
+**/.DS_Store
+
+### ignore archives ###
+*.7z
+*.gz
+*.rar
+*.tar
+*.zip
+
+
+### maven compiled code ###
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
-.vscode/
+### maven wrapper ###
+.mvn
+mvnw*

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import de.freerider.model.Customer;
+import de.freerider.datamodel.Customer;
 
 @SpringBootTest
 class CustomerTest {

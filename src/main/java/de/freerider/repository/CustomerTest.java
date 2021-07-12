@@ -2,7 +2,7 @@ package de.freerider.repository;
 
 import java.util.HashSet;
 
-import de.freerider.model.Customer;
+import de.freerider.datamodel.Customer;
 
 public class CustomerTest {
 

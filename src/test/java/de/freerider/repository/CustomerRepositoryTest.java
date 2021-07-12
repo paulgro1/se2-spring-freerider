@@ -1,6 +1,7 @@
 package de.freerider.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -16,7 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import de.freerider.model.Customer;
+import de.freerider.datamodel.Customer;
 
 @SpringBootTest
 public class CustomerRepositoryTest {
