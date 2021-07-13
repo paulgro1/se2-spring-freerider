@@ -7,9 +7,9 @@ import de.freerider.repository.CrudRepository;
 public class Customer {
 
 	private String id = null;
-	private String lastName = "";
-	private String firstName = "";
-	private String contact = "";
+	private String lastName;
+	private String firstName;
+	private String contact;
 
 	public enum Status {
 		New, InRegistration, Active, Suspended, Deleted
@@ -18,10 +18,9 @@ public class Customer {
 	private Status status = Status.New;
 
 	public Customer(String lastName, String firstName, String contact) {
-		this.lastName = lastName;
-		this.firstName = firstName;
-		this.contact = contact;
-
+		setLastName(lastName);
+		setFirstName(firstName);
+		setContact(contact);
 	}
 
 	public String getId() {
